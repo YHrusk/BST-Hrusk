@@ -2,16 +2,18 @@
 
 <h1 class="uppercase">Calendar</h1>
 
-<div class="flex w-full items-center justify-center">
-  <div class="text-center">
-    <header class="relative">
-      <h2 class="uppercase">@currentMonth.ToString("MMMM")</h2>
+<h4 class="uppercase">@firstDayOfMonth.DayOfWeek</h4>
+<h4 class="uppercase">@lastDayOfMonth.DayOfWeek</h4>
 
-      <button class="border-2 text-2xl text-yellow-500 content-center" @onclick="PreviousMonth">←</button>
-      <button class="border-2 text-2xl text-yellow-500 content-center" @onclick="NextMonth">→</button>
+<div class="flex w-full items-center justify-center">
+  <div class="text-center w-96">
+    <header class="flex flex-row space-x-1.5">
+      <button class="border-2 text-2xl text-yellow-500 content-center float-left w-1/4" @onclick="PreviousMonth">←</button>
+      <h2 class="uppercase w-1/2">@currentDate.ToString("MMMM")</h2>
+      <button class="border-2 text-2xl text-yellow-500 content-center float-right w-1/4" @onclick="NextMonth">→</button>
     </header>
 
-    <table class="border-collapse">
+    <table class="border-collapse w-96">
       <thead class="font-semibold uppercase">
         <tr>
           <td>Mo</td>
@@ -26,12 +28,12 @@
 
       <tbody>
         <tr>
-          <td class="hover:border-2 hover:border-solid">26</td>
-          <td class="hover:border-2 hover:border-solid">27</td>
-          <td class="hover:border-2 hover:border-solid">28</td>
-          <td class="hover:border-2 hover:border-solid">29</td>
-          <td class="hover:border-2 hover:border-solid">30</td>
-          <td class="hover:border-2 hover:border-solid">31</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">26</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">27</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">28</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">29</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">30</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">31</td>
           <td class="hover:border-2 hover:border-solid hover:border-yellow-500">1</td>
         </tr>
         <tr>
@@ -73,12 +75,12 @@
         </tr>
         <tr>
           <td class="hover:border-2 hover:border-solid hover:border-yellow-500">30</td>
-          <td class="hover:border-2 hover:border-solid">1</td>
-          <td class="hover:border-2 hover:border-solid">2</td>
-          <td class="hover:border-2 hover:border-solid">3</td>
-          <td class="hover:border-2 hover:border-solid">4</td>
-          <td class="hover:border-2 hover:border-solid">5</td>
-          <td class="hover:border-2 hover:border-solid">6</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">1</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">2</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">3</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">4</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">5</td>
+          <td class="text-gray-300 hover:border-2 hover:border-solid">6</td>
         </tr>
       </tbody>
     </table>
@@ -88,15 +90,23 @@
 <!-- end container -->
 
 @code {
-    DateTime currentMonth = DateTime.Now;
+    DateTime currentDate = DateTime.Now;
+    DateTime firstDayOfMonth;
+    DateTime lastDayOfMonth;
+
+    public Calendar()
+    {
+        firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+    }
 
     void PreviousMonth()
     {
-        currentMonth = currentMonth.AddMonths(-1);
+        currentDate = currentDate.AddMonths(-1);
     }
 
     void NextMonth()
     {
-        currentMonth = currentMonth.AddMonths(1);
+        currentDate = currentDate.AddMonths(1);
     }
 }
