@@ -103,10 +103,14 @@
     void PreviousMonth()
     {
         currentDate = currentDate.AddMonths(-1);
+        firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
     }
 
     void NextMonth()
     {
         currentDate = currentDate.AddMonths(1);
+        firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
     }
 }
