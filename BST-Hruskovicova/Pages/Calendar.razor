@@ -5,10 +5,10 @@
 <div class="flex w-full items-center justify-center">
   <div class="text-center">
     <header class="relative">
-      <h2 class="uppercase">September</h2>
+      <h2 class="uppercase">@currentMonth.ToString("MMMM")</h2>
 
-      <button class="border-2 text-2xl text-yellow-500 content-center">←</button>
-      <a class="btn-next fontawesome-angle-right" href="#">></a>
+      <button class="border-2 text-2xl text-yellow-500 content-center" @onclick="PreviousMonth">←</button>
+      <button class="border-2 text-2xl text-yellow-500 content-center" @onclick="NextMonth">→</button>
     </header>
 
     <table class="border-collapse">
@@ -88,5 +88,15 @@
 <!-- end container -->
 
 @code {
+    DateTime currentMonth = DateTime.Now;
 
+    void PreviousMonth()
+    {
+        currentMonth = currentMonth.AddMonths(-1);
+    }
+
+    void NextMonth()
+    {
+        currentMonth = currentMonth.AddMonths(1);
+    }
 }
