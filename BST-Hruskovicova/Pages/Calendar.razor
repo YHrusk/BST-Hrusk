@@ -2,90 +2,44 @@
 
 <h1 class="uppercase">Calendar</h1>
 
-<h4 class="uppercase">@firstDayOfMonth.DayOfWeek</h4>
-<h4 class="uppercase">@lastDayOfMonth.DayOfWeek</h4>
+<h4 class="uppercase">@Convert.ToInt32(firstDayOfMonth.DayOfWeek)</h4>
+<h4 class="uppercase">@Convert.ToInt32(lastDayOfMonth.DayOfWeek)</h4>
 
 <div class="flex w-full items-center justify-center">
-  <div class="text-center w-96">
-    <header class="flex flex-row space-x-1.5">
-      <button class="border-2 text-2xl text-yellow-500 content-center float-left w-1/4" @onclick="PreviousMonth">←</button>
-      <h2 class="uppercase w-1/2">@currentDate.ToString("MMMM")</h2>
-      <button class="border-2 text-2xl text-yellow-500 content-center float-right w-1/4" @onclick="NextMonth">→</button>
-    </header>
+    <div class="text-center w-96">
+        <header class="flex flex-row space-x-1.5">
+            <button class="border-2 text-2xl text-yellow-500 content-center float-left w-1/4" @onclick="PreviousMonth">←</button>
+            <h2 class="uppercase w-1/2">@currentDate.ToString("MMMM")</h2>
+            <button class="border-2 text-2xl text-yellow-500 content-center float-right w-1/4" @onclick="NextMonth">→</button>
+        </header>
 
-    <table class="border-collapse w-96">
-      <thead class="font-semibold uppercase">
-        <tr>
-          <td>Mo</td>
-          <td>Tu</td>
-          <td>We</td>
-          <td>Th</td>
-          <td>Fr</td>
-          <td>Sa</td>
-          <td>Su</td>
-        </tr>
-      </thead>
+        <table class="border-collapse w-96">
+            <thead class="font-semibold uppercase">
+                <tr>
+                    <td>Mo</td>
+                    <td>Tu</td>
+                    <td>We</td>
+                    <td>Th</td>
+                    <td>Fr</td>
+                    <td>Sa</td>
+                    <td>Su</td>
+                </tr>
+            </thead>
 
-      <tbody>
-        <tr>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">26</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">27</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">28</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">29</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">30</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">31</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">1</td>
-        </tr>
-        <tr>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">2</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">3</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">4</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">5</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">6</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">7</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">8</td>
-        </tr>
-        <tr>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">9</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">10</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">11</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">12</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">13</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">14</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">15</td>
-        </tr>
-        <tr>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">16</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">17</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">18</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">19</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">20</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">21</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">22</td>
-        </tr>
-
-        <tr>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">23</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">24</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">25</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">26</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">27</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">28</td>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">29</td>
-        </tr>
-        <tr>
-          <td class="hover:border-2 hover:border-solid hover:border-yellow-500">30</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">1</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">2</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">3</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">4</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">5</td>
-          <td class="text-gray-300 hover:border-2 hover:border-solid">6</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- end calendar -->
+            <tbody>
+                    @for (int i = 0; i < 42; i++)
+                    {
+                        DateTime d = firstDayOfMonth.AddDays(i);
+                        @if(i%7==0 && i > 0)
+                        {
+                           <tr></tr>
+                        }
+                        <td>@d.ToString("MMMM dd")</td>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <!-- end calendar -->
 </div>
 <!-- end container -->
 
