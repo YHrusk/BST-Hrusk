@@ -1,0 +1,71 @@
+﻿
+<div class="flex w-full items-center justify-center">
+    <div class="text-center w-96">
+        <h4>@currentDate.Year.ToString()</h4>
+        <header class="flex flex-row space-x-1.5">
+            <button class="border-2 text-2xl text-yellow-500 content-center float-left w-1/4" @onclick="PreviousMonth">←</button>
+            <h2 class="uppercase w-1/2">@currentDate.ToString("MMMM")</h2>
+            <button class="border-2 text-2xl text-yellow-500 content-center float-right w-1/4" @onclick="NextMonth">→</button>
+        </header>
+
+        <table class="border-collapse w-96">
+            <thead class="font-semibold uppercase">
+                <tr>
+                    <td>Mo</td>
+                    <td>Tu</td>
+                    <td>We</td>
+                    <td>Th</td>
+                    <td>Fr</td>
+                    <td>Sa</td>
+                    <td>Su</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                    @for (int i = 0; i < daysInMonth; i++)
+                    {
+                        DateOnly d = firstDayOfMonth.AddDays(i);
+                        @if(i%7==0 && i > 0)
+                        {
+                           <tr></tr>
+                        }
+                        <td @onclick="@(() => SelectedDateCallback.InvokeAsync(d))" class="border-2 border-solid">@d.Day</td>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback<DateOnly> SelectedDateCallback { get; set; }
+
+    DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+
+    int daysInMonth;
+    DateOnly firstDayOfMonth;
+    DateOnly lastDayOfMonth;
+
+    public CalendarComp()
+    {
+        firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
+    }
+
+    void PreviousMonth()
+    {
+        currentDate = currentDate.AddMonths(-1);
+        firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
+    }
+
+    void NextMonth()
+    {
+        currentDate = currentDate.AddMonths(1);
+        firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
+        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
+    }
+
+}
