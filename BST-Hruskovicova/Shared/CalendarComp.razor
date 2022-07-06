@@ -16,15 +16,16 @@
             <div class="font-semibold uppercase">Fr</div>
             <div class="font-semibold uppercase">Sa</div>
             <div class="font-semibold uppercase">Su</div>
-            @for (int i = 0; i < daysInMonth; i++)
+
+            <div class="col-start-@dayOne">@firstDayOfMonth.Day</div>
+            @for (int i = 1; i < daysInMonth; i++)
             {
                 DateOnly d = firstDayOfMonth.AddDays(i);
-                <div @onclick="@(() => SelectedDateCallback.InvokeAsync(d))" class="border-2 border-solid">@d.Day</div>
+                <div @onclick="@(() => SelectedDateCallback.InvokeAsync(d))" class="@SelectedDateCallback==@d ? @visual : @noVisual ">@d.Day</div>
             }
         </div>
 
     </div>
-    <p>start day: @dayOne</p>
 </div>
 
 @code {
@@ -33,10 +34,13 @@
     DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
 
     int daysInMonth;
+    int dayOne;
     DateOnly firstDayOfMonth;
     DateOnly lastDayOfMonth;
 
-    int dayOne;
+    string noVisual = "border-2 border-solid";
+    string visual = "border-2 border-solid border-yellow-500";
+
 
     public CalendarComp()
     {
