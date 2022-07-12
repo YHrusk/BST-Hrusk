@@ -17,7 +17,7 @@
             <div class="font-semibold uppercase">Sa</div>
             <div class="font-semibold uppercase">Su</div>
 
-            <div class="border-2 border-solid col-start-@dayOne">@firstDayOfMonth.Day</div>
+            <div class="border-2 border-solid @classCol">@firstDayOfMonth.Day</div>
             @for (int i = 1; i < daysInMonth; i++)
             {
                 DateOnly d = firstDayOfMonth.AddDays(i);
@@ -37,23 +37,23 @@
     int daysInMonth;
     int dayOne;
     DateOnly firstDayOfMonth;
-    DateOnly lastDayOfMonth;
+    string classCol;
 
     public CalendarComp()
     {
-        firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
-        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);;
         daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
         dayOne = ((int)firstDayOfMonth.DayOfWeek + 6) % 7 + 1;
+        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7"};
     }
 
     void ChangeMonth(int i)
     {
         currentDate = currentDate.AddMonths(i);
         firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
-        lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
         daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
         dayOne = ((int)firstDayOfMonth.DayOfWeek + 6) % 7 + 1;
+        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7"};
     }
 
 }
