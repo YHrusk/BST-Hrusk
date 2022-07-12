@@ -17,11 +17,11 @@
             <div class="font-semibold uppercase">Sa</div>
             <div class="font-semibold uppercase">Su</div>
 
-            <div class="col-start-@dayOne">@firstDayOfMonth.Day</div>
+            <div class="border-2 border-solid col-start-@dayOne">@firstDayOfMonth.Day</div>
             @for (int i = 1; i < daysInMonth; i++)
             {
                 DateOnly d = firstDayOfMonth.AddDays(i);
-                <div @onclick="@(() => SelectedDateCallback.InvokeAsync(d))" class="@SelectedDateCallback==@d ? @visual : @noVisual ">@d.Day</div>
+                <div @onclick="@(() => {SelectedDateCallback.InvokeAsync(d); selectedDate=d;})" class="@(selectedDate==d?"border-2 border-solid border-yellow-500":"border-2 border-solid")">@d.Day</div>
             }
         </div>
 
@@ -32,15 +32,12 @@
     [Parameter] public EventCallback<DateOnly> SelectedDateCallback { get; set; }
 
     DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+    DateOnly selectedDate;
 
     int daysInMonth;
     int dayOne;
     DateOnly firstDayOfMonth;
     DateOnly lastDayOfMonth;
-
-    string noVisual = "border-2 border-solid";
-    string visual = "border-2 border-solid border-yellow-500";
-
 
     public CalendarComp()
     {
