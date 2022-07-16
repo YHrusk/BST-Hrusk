@@ -44,7 +44,7 @@
         firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);;
         daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
         dayOne = ((int)firstDayOfMonth.DayOfWeek + 6) % 7 + 1;
-        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7"};
+        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7", _ => ""};
     }
 
     void ChangeMonth(int i)
@@ -53,7 +53,7 @@
         firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
         daysInMonth = DateTime.DaysInMonth((int)currentDate.Year, (int)currentDate.Month);
         dayOne = ((int)firstDayOfMonth.DayOfWeek + 6) % 7 + 1;
-        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7"};
+        classCol = dayOne switch { 1 => "col-start-1", 2 => "col-start-2", 3 => "col-start-3", 4 => "col-start-4", 5 => "col-start-5", 6 => "col-start-6", 7 => "col-start-7", _ => ""};
     }
 
 }
