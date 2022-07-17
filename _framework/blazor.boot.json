@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BST-Hruskovicova.dll": "sha256-uFHKbxFTP98d+BMfx6JVM+8pBYPCNCMgR7bKe0\/98D4=",
+      "BST-Hruskovicova.dll": "sha256-dfVJ06rC7XPy8vtq+UTKvUXvnTJxmDY8gDPnmH\/zwio=",
       "Microsoft.AspNetCore.Components.dll": "sha256-\/R+dd8\/4Mi7lVxIWXt4y3EPH2Xyfqvpc06U26z1ZbMw=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-J56CIqNtJKqXm6dWMAhvRI23W5p7RnErlWEDZVcwjV0=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-Izlw\/SnIKXEmOa2P51s8rKqkVBfJ+MDvJMUpyP5lHkk=",
