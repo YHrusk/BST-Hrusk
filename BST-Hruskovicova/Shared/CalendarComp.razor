@@ -17,19 +17,18 @@
             <div class="font-semibold uppercase">Sa</div>
             <div class="font-semibold uppercase">Su</div>
 
-            @{DateOnly d = firstDayOfMonth;}
+            @{DateOnly date = firstDayOfMonth;}
 
-            <div  @onclick="@(() => {SelectedDateCallback.InvokeAsync(d); selectedDate=d;})" class="@(selectedDate==d?"border-2 border-solid border-yellow-500":"border-2 border-solid") @classCol">@firstDayOfMonth.Day</div>
+            <div  @onclick="@(() => {SelectedDateCallback.InvokeAsync(date); selectedDate=date;})" class="@(selectedDate==date?"border-2 border-solid border-yellow-500":"border-2 border-solid") @classCol">@firstDayOfMonth.Day</div>
             @for (int i = 1; i < daysInMonth; i++)
             {
-                d = firstDayOfMonth.AddDays(i);
+                DateOnly d = firstDayOfMonth.AddDays(i);
                 <div @onclick="@(() => {SelectedDateCallback.InvokeAsync(d); selectedDate=d;})" class="@(selectedDate==d?"border-2 border-solid border-yellow-500":"border-2 border-solid")">@d.Day</div>
             }
         </div>
 
     </div>
 
-    @currentDate
 </div>
 
 @code {
